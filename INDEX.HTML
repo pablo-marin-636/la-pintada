@@ -1,0 +1,297 @@
+!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Descubre La Pintada, Antioquia, un destino turístico con naturaleza, historia y gastronomía en el Suroeste de Antioquia.">
+    <meta name="keywords" content="La Pintada, Antioquia, turismo, río Cauca, puente colgante, gastronomía antioqueña">
+    <meta name="author" content="La Pintada Turismo">
+    <title>La Pintada, Antioquia</title>
+    <!-- Incluye Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Importamos la fuente Poppins */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* Estilo para el botón de volver arriba */
+        #scrollToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #059669;
+            color: white;
+            padding: 12px;
+            border-radius: 50%;
+            display: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        #scrollToTop:hover {
+            background-color: #047857;
+            transform: scale(1.1);
+        }
+        /* Estilo para el modal */
+        #modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 50;
+            justify-content: center;
+            align-items: center;
+        }
+        #modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            max-width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+        }
+        #close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: #059669;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        #close-modal:hover {
+            background-color: #047857;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Sección de Encabezado (Hero) -->
+    <header class="bg-gradient-to-br from-emerald-500 to-cyan-600 text-white py-20 px-6 rounded-b-3xl shadow-2xl">
+        <div class="container mx-auto text-center">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-4 animate-pulse">La Pintada</h1>
+            <p class="text-lg md:text-2xl font-light italic">Un oasis de calor y naturaleza en el Suroeste de Antioquia</p>
+        </div>
+    </header>
+
+    <!-- Contenedor Principal de Contenido -->
+    <main class="container mx-auto my-12 px-4 sm:px-6 lg:px-8 space-y-16">
+
+        <!-- Sección de Historia y Ubicación -->
+        <section class="bg-white p-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+            <h2 class="text-4xl font-bold text-center text-emerald-600 mb-8 border-b-4 border-cyan-500 pb-4">Historia y Ubicación</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <p class="text-justify text-lg leading-relaxed text-gray-700">
+                    La Pintada, un joven municipio colombiano, se encuentra en la subregión del Suroeste de Antioquia, a tan solo 80 km de Medellín. Su ubicación es estratégica, sirviendo como un punto de conexión vital entre la capital paisa, el Eje Cafetero y la costa Pacífica. Su nombre, según la leyenda local, se debe a una colorida casona que servía de guía para los antiguos arrieros que transitaban por la región. Elevado a municipio en 1997, ha florecido como un destino turístico que combina la tranquilidad de la vida rural con la belleza natural de su entorno.
+                </p>
+                <div class="rounded-2xl overflow-hidden shadow-2xl">
+                    <img src="https://seecolombia.travel/blog/wp-content/uploads/2021/08/la-pintada-antioquia-mas-que-solo-piscinas-y-fincas-1024x768.jpg" alt="Vista panorámica de La Pintada" class="w-full h-auto object-cover transform hover:scale-110 transition-transform duration-500">
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Atractivos Turísticos -->
+        <section class="bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-emerald-600 mb-6 border-b-4 border-cyan-500 pb-4">Atractivos Turísticos</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-center">
+                <!-- Tarjeta de Puente Colgante -->
+                <div class="bg-slate-50 p-6 rounded-2xl border-2 border-slate-200 shadow-lg transform hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="openModalPuente()" role="button" aria-label="Ver historia del Puente Colgante">
+                    <svg class="h-14 w-14 text-emerald-500 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10v6a2 2 0 002 2h14a2 2 0 002-2v-6M3 10l9-6 9 6M3 10h18M5 18h14a2 2 0 002-2v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2z" />
+                    </svg>
+                    <h3 class="text-xl font-bold mb-2 text-slate-900">Puente Colgante</h3>
+                    <p class="text-sm text-gray-600">Un icono del municipio con vistas impresionantes al cañón del río Cauca.</p>
+                </div>
+                <!-- Tarjeta de Río Cauca -->
+                <div class="bg-slate-50 p-6 rounded-2xl border-2 border-slate-200 shadow-lg transform hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="openModalRio()" role="button" aria-label="Ver información del Río Cauca">
+                    <svg class="h-14 w-14 text-emerald-500 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21a9 9 0 009-9h-9m0 0a9 9 0 01-9-9h9m0 0a9 9 0 00-9 9m7.6 2c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z" />
+                    </svg>
+                    <h3 class="text-xl font-bold mb-2 text-slate-900">El Río Cauca</h3>
+                    <p class="text-sm text-gray-600">Disfruta de un día de sol, pesca o deportes acuáticos en sus orillas.</p>
+                </div>
+                <!-- Tarjeta de Deportes de Aventura -->
+                <div class="bg-slate-50 p-6 rounded-2xl border-2 border-slate-200 shadow-lg transform hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="openModalDeportes()" role="button" aria-label="Ver información de Deportes Extremos">
+                    <svg class="h-14 w-14 text-emerald-500 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    </svg>
+                    <h3 class="text-xl font-bold mb-2 text-slate-900">Deportes Extremos</h3>
+                    <p class="text-sm text-gray-600">La geografía de la zona es ideal para el rafting y el senderismo.</p>
+                </div>
+                <!-- Tarjeta de Parque Principal -->
+                <div class="bg-slate-50 p-6 rounded-2xl border-2 border-slate-200 shadow-lg transform hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="openModalParque()" role="button" aria-label="Ver información del Parque Principal">
+                    <svg class="h-14 w-14 text-emerald-500 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <h3 class="text-xl font-bold mb-2 text-slate-900">Parque Principal</h3>
+                    <p class="text-sm text-gray-600">El punto de encuentro ideal para disfrutar de la gastronomía y el ambiente local.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Galería de Imágenes -->
+        <section class="bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-emerald-600 mb-6 border-b-4 border-cyan-500 pb-4">Galería de Imágenes</h2>
+            <p class="text-center text-gray-600 italic mb-8">Explora la belleza natural y cultural de La Pintada a través de estas imágenes.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <img src="https://thumbs.dreamstime.com/b/vista-panor%C3%A1mica-de-la-ciudad-la-pintada-antioquia-colombia-92906165.jpg" alt="Vista aérea del puente colgante de La Pintada" class="w-full h-full object-cover">
+                </div>
+                <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <img src="https://rutasdelconflicto.com/rios-vida-muerte/sites/default/files/Portada_HOME.jpg" alt="Paisaje natural del río Cauca en La Pintada" class="w-full h-full object-cover">
+                </div>
+                <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <img src="https://mapio.net/images-p/15422229.jpg" alt="Atardecer sobre el municipio de La Pintada" class="w-full h-full object-cover">
+                </div>
+                <div class="rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <img src="https://www.puebliandoporantioquia.com.co/wp-content/uploads/2025/03/PANORAMICA-LA-PINTADA-B-2-1.jpg" alt="Vista panorámica del pueblo de La Pintada" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de Clima y Gastronomía -->
+        <section class="bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1">
+            <h2 class="text-3xl md:text-4xl font-bold text-center text-emerald-600 mb-6 border-b-4 border-cyan-500 pb-4">Clima y Gastronomía</h2>
+            <div class="grid md:grid-cols-2 gap-10 items-center">
+                <div class="space-y-5">
+                    <p class="text-justify text-base md:text-lg leading-relaxed text-gray-700">
+                        El clima en La Pintada es <strong>cálido y seco</strong> durante la mayor parte del año, con temperaturas que oscilan entre los 25°C y los 35°C. La gastronomía local es una fusión de los sabores tradicionales antioqueños con ingredientes frescos de la región.
+                    </p>
+                    <ul class="list-disc list-inside text-base md:text-lg leading-relaxed space-y-2 text-gray-700">
+                        <li><strong>Pescado de río:</strong> Gracias al río Cauca, el pescado fresco es un ingrediente principal en muchos platos.</li>
+                        <li><strong>Frutas tropicales:</strong> La variedad de frutas exóticas de la región es perfecta para jugos refrescantes.</li>
+                        <li><strong>Platos típicos:</strong> No te vayas sin probar la tradicional bandeja paisa, un sancocho de gallina o los deliciosos dulces locales.</li>
+                    </ul>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="rounded-2xl overflow-hidden shadow-2xl">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgGVB_pSPDhSSUCneWKSmJhxZh42-nAu4iYzG0B4KatdRSrx_UR1yTBc1cVENurdcZEtw_rjYSd8Ezzzq-t9vMAyeE0zaxmYiOdUqF2X7cl6-Sq233KXKTDtj5RbxurGXIwu0H26OGWsuY/s1600/sancochoga.jpg" alt="Sancocho de gallina, plato típico de La Pintada" class="w-full h-auto object-cover transform hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="rounded-2xl overflow-hidden shadow-2xl">
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/17/0d/3c/5f/pizzas-a-la-piedra.jpg?w=700&h=400&s=1"Bandeja paisa, plato tradicional antioqueño" class="w-full h-auto object-cover transform hover:scale-110 transition-transform duration-500">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal para información de los atractivos -->
+        <div id="modal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+            <div id="modal-content" class="text-gray-800">
+                <button id="close-modal" aria-label="Cerrar modal">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+                <h3 id="modal-title" class="text-2xl font-bold text-emerald-600 mb-4"></h3>
+                <p id="modal-text" class="text-base leading-relaxed text-gray-700"></p>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Botón de Volver Arriba -->
+    <button id="scrollToTop" title="Volver arriba">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+    </button>
+
+    <!-- Pie de Página -->
+    <footer class="bg-slate-900 text-white p-6 rounded-t-3xl shadow-lg mt-12">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2025 La Pintada, Antioquia. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Script para el botón de Volver Arriba y el Modal -->
+    <script>
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        const modal = document.getElementById('modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalText = document.getElementById('modal-text');
+        const closeModalBtn = document.getElementById('close-modal');
+
+        // Botón de volver arriba
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                scrollToTopBtn.style.display = 'block';
+            } else {
+                scrollToTopBtn.style.display = 'none';
+            }
+        });
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Funciones del modal
+        function openModal(content) {
+            modalTitle.textContent = content.title;
+            modalText.textContent = content.text;
+            modal.style.display = 'flex';
+            modal.setAttribute('aria-hidden', 'false');
+            closeModalBtn.focus();
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+            modal.setAttribute('aria-hidden', 'true');
+        }
+
+        // Contenido de los modales
+        function openModalPuente() {
+            openModal({
+                title: 'Historia del Puente Colgante de La Pintada',
+                text: 'El Puente Colgante de La Pintada, conocido como el "Puente Viejo", es una joya histórica y arquitectónica del municipio. Construido en 1887 sobre el río Cauca, este puente fue diseñado por el ingeniero colombiano José María Villa, quien también es célebre por el Puente de Occidente. La estructura, que conecta las dos márgenes del río Cauca, fue clave para el desarrollo económico de la región al facilitar el transporte de productos agrícolas y ganaderos durante el auge del siglo XIX. Construido con materiales locales como madera, ladrillo y piedra, y con cables importados de Inglaterra, el puente es un testimonio del ingenio antioqueño. Declarado monumento departamental, ha sido restaurado para preservar su legado y hoy es un atractivo turístico que ofrece vistas impresionantes del cañón del río Cauca.'
+            });
+        }
+
+        function openModalRio() {
+            openModal({
+                title: 'El Río Cauca en La Pintada',
+                text: 'El río Cauca es el corazón natural de La Pintada, Antioquia, y uno de los ríos más importantes de Colombia. Atraviesa el municipio, ofreciendo paisajes espectaculares y oportunidades para actividades recreativas. Históricamente, ha sido vital para la economía local, apoyando la pesca, la agricultura y el transporte. Sus aguas son ideales para deportes acuáticos como el rafting y el kayak, así como para momentos de relajación en sus orillas. Además, el río es hogar de una rica biodiversidad, incluyendo especies de peces que son la base de la gastronomía local, como el pescado de río servido en platos tradicionales.'
+            });
+        }
+
+        function openModalDeportes() {
+            openModal({
+                title: 'Deportes Extremos en La Pintada',
+                text: 'La geografía única de La Pintada, con su combinación de montañas, cañones y el río Cauca, la convierte en un destino ideal para los amantes de los deportes extremos. El rafting en el río Cauca es una de las actividades más populares, con rápidos que desafían a los aventureros mientras disfrutan de vistas impresionantes. El senderismo también es destacado, con rutas que atraviesan bosques tropicales y ofrecen panoramas de la región. Otras actividades incluyen ciclismo de montaña y escalada en roca, aprovechando el terreno accidentado y la belleza natural del Suroeste antioqueño.'
+            });
+        }
+
+        function openModalParque() {
+            openModal({
+                title: 'El Parque Principal de La Pintada',
+                text: 'El Parque Principal de La Pintada es el epicentro social y cultural del municipio. Este espacio vibrante es el punto de encuentro para residentes y visitantes, donde se celebran festividades, mercados y eventos culturales. Rodeado de arquitectura tradicional antioqueña, el parque está lleno de vida, con vendedores de comida ofreciendo delicias como empanadas, arepas y dulces típicos. Es un lugar ideal para disfrutar de la hospitalidad paisa, escuchar música local y experimentar la calidez de la comunidad. Además, el parque cuenta con áreas verdes y bancas que invitan a descansar y disfrutar del ambiente local.'
+            });
+        }
+
+        closeModalBtn.addEventListener('click', closeModal);
+
+        // Cerrar modal con tecla Esc
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && modal.style.display === 'flex') {
+                closeModal();
+            }
+        });
+
+        // Cerrar modal al hacer clic fuera del contenido
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+    </script>
+
+</body>
+</html>
